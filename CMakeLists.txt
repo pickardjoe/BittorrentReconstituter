@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+set(CMAKE_INSTALL_PREFIX "/usr")
 FIND_PACKAGE( Boost 1.40 COMPONENTS program_options serialization REQUIRED )
 FIND_PACKAGE( pcap REQUIRED )
 FIND_PACKAGE( openssl REQUIRED)
@@ -13,4 +14,5 @@ ADD_SUBDIRECTORY(pcap_parser)
 ADD_SUBDIRECTORY(file_reconstituter)
 TARGET_LINK_LIBRARIES( btfinder ${Boost_LIBRARIES} pcap_parser file_reconstituter ${PCAP_LIBRARIES} ${OpenSSL_LIBRARIES})
 
-INSTALL(TARGETS)
+INSTALL(TARGETS btfinder DESTINATION bin)
+
